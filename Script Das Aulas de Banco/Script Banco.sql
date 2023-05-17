@@ -329,12 +329,14 @@
             # 2ª Maneira Com Critério / UTILIZA O ID PARA IDENTIFICAR O CONTÉUDO A SER MUDADO
             # - Muda só o conteúdo do atributo determinado pelo id
 			update 
-				tbl_genero 
+				tbl_diretor
 			set 
-				nome = 'Policial' 
+				nome_artistico = null
 			where 
-				id = 7;
+				id = 3;
             
+            desc tbl_ator_nacionalidade;
+            select * from tbl_ator_nacionalidade;
             
             insert into 
 					tbl_classificacao (sigla, nome, descricao) 
@@ -346,127 +348,169 @@
                     ('16', 'Não recomendado para menores de 14 anos', 'Conteúdos mais violentos ou com conteúdo sexual mais intenso com cenas de t...'),
                     ('18', 'Não recomendado para menores de 14 anos', 'Conteúdos violentos e sexuais extremos. Cenas de sexo, incesto ou atos repe...');
 
-alter table tbl_classificacao modify column descricao varchar(150) not null;
+			alter table tbl_classificacao modify column descricao varchar(150) not null;
 
-show tables;
+			show tables;
 
-desc tbl_filme;
+			desc tbl_filme;
 
-
-
-## INSERT
-### TABELA DE FILME
+			## INSERT
+			### TABELA DE FILME
 			insert into
 				tbl_filme (nome, nome_original, data_lancamento, duracao, data_relancamento, foto_capa, sinopse, id_classificacao)
 			values
 				('VINGADORES: ULTIMATO',
-                'Avengers: Endgame',
-                '2019-04-25',
-                '03:01:00',
-                '2019-07-11',
-                'https://br.web.img2.acsta.net/c_310_420/pictures/19/04/26/17/30/2428965.jpg',
-                'Em Vingadores: Ultimato, após Thanos eliminar metade das criaturas vivas em Vingadores: Guerra Infinita, os heróis precisam lidar com a dor da perda de amigos e seus entes queridos. Com Tony Stark (Robert Downey Jr.) vagando perdido no espaço sem água nem comida, o Capitão América/Steve Rogers (Chris Evans) e a Viúva Negra/Natasha Romanov (Scarlett Johansson) precisam liderar a resistência contra o titã louco.',
-                21
-                );
-                
-                
+					'Avengers: Endgame',
+					'2019-04-25',
+					'03:01:00',
+					'2019-07-11',
+					'https://br.web.img2.acsta.net/c_310_420/pictures/19/04/26/17/30/2428965.jpg',
+					'Em Vingadores: Ultimato, após Thanos eliminar metade das criaturas vivas em Vingadores: Guerra Infinita, os heróis precisam lidar com a dor da perda de amigos e seus entes queridos. Com Tony Stark (Robert Downey Jr.) vagando perdido no espaço sem água nem comida, o Capitão América/Steve Rogers (Chris Evans) e a Viúva Negra/Natasha Romanov (Scarlett Johansson) precisam liderar a resistência contra o titã louco.',
+					21
+					);
+				
 			insert into
 				tbl_filme (nome, nome_original, data_lancamento, duracao, data_relancamento, foto_capa, sinopse, id_classificacao)
 			values
 				('O PODEROSO CHEFÃO',
-                'The Godfather',
-                '1972-03-24',
-                '02:55:00',
-                '2022-02-24',
-                'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/90/93/20/20120876.jpg',
-                'Don Vito Corleone (Marlon Brando) é o chefe de uma "família" de Nova York que está feliz, pois Connie (Talia Shire), sua filha, se casou com Carlo (Gianni Russo). Porém, durante a festa, Bonasera (Salvatore Corsitto) é visto no escritório de Don Corleone pedindo "justiça", vingança na verdade contra membros de uma quadrilha, que espancaram barbaramente sua filha por ela ter se recusado a fazer sexo para preservar a honra. Vito discute, mas os argumentos de Bonasera o sensibilizam e ele promete que os homens, que maltrataram a filha de Bonasera não serão mortos, pois ela também não foi, mas serão severamente castigados. Vito porém deixa claro que ele pode chamar Bonasera algum dia para devolver o "favor". Do lado de fora, no meio da festa, está o terceiro filho de Vito, Michael (Al Pacino), um capitão da marinha muito decorado que há pouco voltou da 2ª Guerra Mundial. Universitário educado, sensível e perceptivo, ele quase não é notado pela maioria dos presentes, com exceção de uma namorada da faculdade, Kay Adams (Diane Keaton), que não tem descendência italiana mas que ele ama. Em contrapartida há alguém que é bem notado, Johnny Fontane (Al Martino), um cantor de baladas românticas que provoca gritos entre as jovens que beiram a histeria. Don Corleone já o tinha ajudado, quando Johnny ainda estava em começo de carreira e estava preso por um contrato com o líder de uma grande banda, mas a carreira de Johnny deslanchou e ele queria fazer uma carreira solo. Por ser seu padrinho Vito foi procurar o líder da banda e ofereceu 10 mil dólares para deixar Johnny sair, mas teve o pedido recusado. Assim, no dia seguinte Vito voltou acompanhado por Luca Brasi (Lenny Montana), um capanga, e após uma hora ele assinou a liberação por apenas mil dólares, mas havia um detalhe: nas "negociações" Luca colocou uma arma na cabeça do líder da banda. Agora, no meio da alegria da festa, Johnny quer falar algo sério com Vito, pois precisa conseguir o principal papel em um filme para levantar sua carreira, mas o chefe do estúdio, Jack Woltz (John Marley), nem pensa em contratá-lo. Nervoso, Johnny começa a chorar e Vito, irritado, o esbofeteia, mas promete que ele conseguirá o almejado papel. Enquanto a festa continua acontecendo, Don Corleone comunica a Tom Hagen (Robert Duvall), seu filho adotivo que atua como conselheiro, que Carlo terá um emprego mas nada muito importante, e que os "negócios" não devem ser discutidos na sua frente. Os verdadeiros problemas começam para Vito quando Sollozzo (Al Lettieri), um gângster que tem apoio de uma família rival, encabeçada por Phillip Tattaglia (Victor Rendina) e seu filho Bruno (Tony Giorgio). Sollozzo, em uma reunião com Vito, Sonny e outros, conta para a família que ele pretende estabelecer um grande esquema de vendas de narcóticos em Nova York, mas exige permissão e proteção política de Vito para agir. Don Corleone odeia esta idéia, pois está satisfeito em operar com jogo, mulheres e proteção, mas isto será apenas a ponta do iceberg de uma mortal luta entre as "famílias".',
-                22
-                );
-                
-                
-select * from tbl_genero;
+				'The Godfather',
+				'1972-03-24',
+				'02:55:00',
+				'2022-02-24',
+				'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/90/93/20/20120876.jpg',
+				'Don Vito Corleone (Marlon Brando) é o chefe de uma "família" de Nova York que está feliz, pois Connie (Talia Shire), sua filha, se casou com Carlo (Gianni Russo). Porém, durante a festa, Bonasera (Salvatore Corsitto) é visto no escritório de Don Corleone pedindo "justiça", vingança na verdade contra membros de uma quadrilha, que espancaram barbaramente sua filha por ela ter se recusado a fazer sexo para preservar a honra. Vito discute, mas os argumentos de Bonasera o sensibilizam e ele promete que os homens, que maltrataram a filha de Bonasera não serão mortos, pois ela também não foi, mas serão severamente castigados. Vito porém deixa claro que ele pode chamar Bonasera algum dia para devolver o "favor". Do lado de fora, no meio da festa, está o terceiro filho de Vito, Michael (Al Pacino), um capitão da marinha muito decorado que há pouco voltou da 2ª Guerra Mundial. Universitário educado, sensível e perceptivo, ele quase não é notado pela maioria dos presentes, com exceção de uma namorada da faculdade, Kay Adams (Diane Keaton), que não tem descendência italiana mas que ele ama. Em contrapartida há alguém que é bem notado, Johnny Fontane (Al Martino), um cantor de baladas românticas que provoca gritos entre as jovens que beiram a histeria. Don Corleone já o tinha ajudado, quando Johnny ainda estava em começo de carreira e estava preso por um contrato com o líder de uma grande banda, mas a carreira de Johnny deslanchou e ele queria fazer uma carreira solo. Por ser seu padrinho Vito foi procurar o líder da banda e ofereceu 10 mil dólares para deixar Johnny sair, mas teve o pedido recusado. Assim, no dia seguinte Vito voltou acompanhado por Luca Brasi (Lenny Montana), um capanga, e após uma hora ele assinou a liberação por apenas mil dólares, mas havia um detalhe: nas "negociações" Luca colocou uma arma na cabeça do líder da banda. Agora, no meio da alegria da festa, Johnny quer falar algo sério com Vito, pois precisa conseguir o principal papel em um filme para levantar sua carreira, mas o chefe do estúdio, Jack Woltz (John Marley), nem pensa em contratá-lo. Nervoso, Johnny começa a chorar e Vito, irritado, o esbofeteia, mas promete que ele conseguirá o almejado papel. Enquanto a festa continua acontecendo, Don Corleone comunica a Tom Hagen (Robert Duvall), seu filho adotivo que atua como conselheiro, que Carlo terá um emprego mas nada muito importante, e que os "negócios" não devem ser discutidos na sua frente. Os verdadeiros problemas começam para Vito quando Sollozzo (Al Lettieri), um gângster que tem apoio de uma família rival, encabeçada por Phillip Tattaglia (Victor Rendina) e seu filho Bruno (Tony Giorgio). Sollozzo, em uma reunião com Vito, Sonny e outros, conta para a família que ele pretende estabelecer um grande esquema de vendas de narcóticos em Nova York, mas exige permissão e proteção política de Vito para agir. Don Corleone odeia esta idéia, pois está satisfeito em operar com jogo, mulheres e proteção, mas isto será apenas a ponta do iceberg de uma mortal luta entre as "famílias".',
+				22
+				);
+				
+			## INSERT
+			## TABELA DE RELAÇÃO ENTRE FILME E GENERO
 
-## INSERT
-## TABELA DE RELAÇÃO ENTRE FILME E GENERO
+			insert into tbl_filme_genero (id_filme, id_genero) values (1, 3), (1, 4), (1, 5), (1, 8);
 
-insert into tbl_filme_genero (id_filme, id_genero) values (1, 3), (1, 4), (1, 5), (1, 8);
+			insert into tbl_filme_genero (id_filme, id_genero) values (7, 8), (7, 10), (7, 3);
 
-insert into tbl_filme_genero (id_filme, id_genero) values (7, 8), (7, 10), (7, 3);
+			insert into tbl_filme_genero (id_filme, id_genero) values (6, 8), (6, 11);
 
-insert into tbl_filme_genero (id_filme, id_genero) values (6, 8), (6, 11);
+			select * from tbl_classificacao;
+						
+			select * from tbl_genero;
 
-select * from tbl_classificacao;
+			select * from tbl_sexo;
+
+
+
+			## Criando os atores
+			insert into 
+				tbl_ator (nome, nome_artistico, data_nascimento, data_falecimento, biografia, foto, id_sexo)
+			values
+				( 'Mark Alan Ruffalo',
+			'MARK RUFFALO',
+			'1967-11-22',
+			null,
+			'Apesar de ter um pequeno papel em Ride With The Devil (1999), a primeira participação de destaque de Mark Ruffalo no cinema vem com o premiado drama Conte Comigo (2000). Ele conquista papéis importantes no thriller erótico Em Carne Viva (2003) e no drama Brilho Eterno de uma Mente Sem Lembranças (2004), antes de se lançar em comédias românticas como De Repente 30 (2004) e Dizem Por Aí... (2005).
+
+			Ele retoma os dramas e suspenses com Zodíaco (2007) e Ensaio Sobre a Cegueira (2008). Em 2010, Martin Scorsese convida-o a atuar em Ilha do Medo, ao lado de Leonardo DiCaprio. Ele recebe sua primeira indicação ao Oscar como ator coadjuvante no drama Minhas Mães e Meu Pai (2010). Um grande passo para o reconhecimento popular vem com o papel de Hulk no grande sucesso Os Vingadores - The Avengers (2012), abrindo a porta para novas produções no papel do monstro gigantesco.',
+			'https://br.web.img3.acsta.net/c_310_420/pictures/19/04/22/20/02/3083743.jpg',
+			1
+			);
+			
+			### Vinculando Atores aos filmes
+			insert into tbl_filme_ator (id_filme, id_ator) values (7, 17);
+
+			## Vinculando Atores ás Nacionalidades
+			insert into tbl_ator_nacionalidade (id_ator, id_nacionalidade) values (17, 1);
+			
+			## Vinculando Atores ás Nacionalidades
+			insert into tbl_diretor_nacionalidade (id_diretor, id_nacionalidade) values (8, 1);
+		
+			## Inserindo os diretores
+			insert into
+				tbl_diretor (nome, nome_artistico, data_nascimento, biografia, foto, id_sexo)
+			values
+				( 'Anthony J. Russo',
+				'ANTHONY RUSSO',
+				'1970-02-03',
+				'Anthony Russo nasceu o 3 de fevereiro de 1970 em Cleveland, Ohio, EUA. É produtor e diretor, conhecido pelo seu trabalho em Tudo em Todo o Lugar ao Mesmo Tempo (2022), Vingadores: Ultimato (2019) e Vingadores: Guerra Infinita (2018).',
+				'https://br.web.img2.acsta.net/c_310_420/pictures/15/11/24/16/59/250993.jpg',
+				1
+				);
+				
+			## Vinculando os Diretores aos Filmes
+			insert into tbl_filme_diretor (id_filme, id_diretor) values (7, 8);
+		 
+			## Inserindo as avaliações
+			insert into 
+				tbl_filme_avaliacao (nota, comentario, id_filme)
+			values
+				(3.5,
+				'Vingadores; Ultimato- Um final fraco para um universo espetacular
+				Na minha opinião, Endgame é um filme mediano para terminar algo grandioso.',
+				7
+				);
+				
+			
+########################################################################################################################
+													########
+													########
+####################################### MANIPULANDO DADOS COM O SELECT ################################################
+
+			# -> Select
+				## SELECT 	- serve para especificar quais colunas serão exibidades
+				## FROM 	- serve para definir qual(is) tabelas serão utilizadas
+				## WHERE 	- serve para definir o critério de busca
+
+			## Retorna todas as colunas de uma tabela e todos os registros
+			select * from tbl_filme;
+			select tbl_filme.* from tbl_filme;
+
+			## Retorna apenas as colunos escolhidas
+			select  id, nome, nome_original from tbl_filme;
+			select tbl_filme.id, tbl_filme.nome, tbl_filme.nome_original from tbl_filme;
+			
+			## Podemos criar nomenclaturas virtuais para as colunas e tabelas (isso não altera fisicamente a tabela)
+			select filme.id as id_filme,
+					filme.nome as nome_filme,
+					filme.data_lancamento as data_lancamento_filme,
+					filme.id_classificacao as filme_classificacao
+			from tbl_filme as filme;
+
+			## Permite ordenar de forma crescente e decrescente
+			select * from tbl_filme order by nome; # (crescente)
+			select * from tbl_filme order by nome asc;
+			select * from tbl_filme order by nome desc;
+			select * from tbl_filme order by nome, data_lancamento asc;
+			select * from tbl_filme order by nome, data_lancamento asc, sinopse desc;
+			
+			## Limitar a quantidade de registros que serão exibidos
+				## Limit é diferente em outros bancos (TOP no Oracle)
+			select * from tbl_filme limit 3;
+			select * from tbl_filme order by nome desc limit 3;
+			
+            ## ucase ou upper - padroniza o resultado do dados em Maisculo
+            ## lcase ou lower - padroniza o resultado dos dados em Minusculo
+			select ucase(filme.nome) as nome_filme from tbl_filme as filme;
             
-select * from tbl_genero;
+            select ucase(filme.nome) as nome_filme,
+					lower(filme.nome_original) as nome_original
+                    from tbl_filme as filme;
+                    
+            select lcase(filme.nome_original) as nome_filme_original from tbl_filme as filme;
 
-
-
-select * from tbl_sexo;
-
-
-
-
-	insert into 
-		tbl_ator (nome, nome_artistico, data_nascimento, data_falecimento, biografia, foto, id_sexo)
-	values
-		( 'Todd Jones',
-        'JAMES EARL JONES',
-        '1931-01-17',
-        null,
-        '- Do signo de Capricórnio;
-
-		- Possui descendência africana, indígena e irlandesa;
-
-		- Foi criado pelos avós maternos. Seus pais, Ruth Connolly and Robert Earl Jones, se separaram pouco antes de seu nascimento;
-
-		- Começou a ter aulas de atuação para curar sua gagueira;
-
-		- Também para melhorar sua dicção, começou a escrever poesias e contava com o apoio dos professores, que permitiam que ele as lesse em sala de aula;
-
-		- É um veterano do exército dos Estados Unidos;
-
-		- É membro da NRA (Associação Nacional de Rifles da América);
-
-		- Foi casado com a atriz Julienne Marie, de quem se separou em 1972. Se casou novamente dez anos depois, em 82, com Cecilia Hart, com quem teve um filho;
-
-		- Foi o primeiro afro-descendente a interpretar o presidente dos EUA. Foi no telefilme The Man, de 1972;
-
-		- Conhecido por sua voz marcante, tendo conquistado notoriedade por dublar Darth Vader em Star Wars e Mufasa em O Rei Leão;
-
-		- Jones revela que George Lucas queria Orson Welles como voz de Darth Vader, mas que desistiu da ideia por considerar que o ator/diretor era conhecido demais e poderia roubar a cena do personagem;
-
-		- Pediu para não ter seu nome nos créditos de Guerra nas Estrelas e O Império Contra-ataca por considerar que sua contribuição para os filmes não era significativa o bastante. Aceitou ser creditado em O Retorno de Jedi;
-
-		- Recebeu apenas US$ 9 mil pelo trabalho no primeiro Star Wars (1977). Mais tarde, em 88, faturou US$ 900 mil para interpretar o pai de Eddie Murphy em Um Príncipe em Nova York;
-
-		- Teve sua morte anunciada em um jogo da NBA em 1998. O morto na verdade era James Earl Ray, o assassino de Martin Luther King;
-
-		- Atuou cinco vezes com a atriz Madge Sinclair;
-
-		- Interpretou um mesmo papel no teatro ("The Great White Hope") e no cinema (A Grande Esperança Branca). A atuação nos palcos lhe rendeu o primeiro de seus dois prêmios Tony e a no cinema lhe deu sua única indicação ao Oscar;
-
-		- Foi a primeira celebridade a aceitar aparecer como convidada no seriado dos Muppets, Sesame Street;
-
-		- Em 2005, foi obrigado a deixar a adaptação de Num Lago Dourado na Broadway em razão de uma pneumonia;
-
-		- Uma banda de rock da Noruega batizou seu nome em homenagem ao ator: James Earl Jones Barbershop Explosion!;
-
-		- Foi escolhido pela Academia de Artes e Ciências Cinematográficas para receber um Oscar Honorário em 2011.',
-		'https://br.web.img3.acsta.net/c_310_420/medias/nmedia/18/87/55/34/20040970.jpg',
-        1
-        );
-        
-        desc tbl_ator;
-        
-        insert into tbl_filme_ator (id_filme, id_ator) values (5, 4);
-
-select * from tbl_filme;
-
-select * from tbl_filme_ator;
-
-select * from tbl_ator;
-
-select * from tbl_filme_ator;
-
-
-
+			select ucase(filme.nome) as nome_filme,
+					lower(filme.nome_original) as nome_original,
+                    length(filme.nome) as qtde_caracteres_nome
+                    from tbl_filme as filme;
+                    
+                    ##lenght - retorna a quantidade de caracteres
+                    ## concat - permite concatenar strings
+                    ## substr - ´permite cortar string
+			select 	filme.nome_original as nome_filme_original,
+					lcase(filme.nome_original) as nome_original_minusculo,
+					ucase(filme.nome_original) as nome_original_maiusculo,
+                    length(filme.nome_original) as qtde_caracteres_nome_original,
+                    concat('Filme: ', filme.nome_original) as nome_filme_formatado_original,
+                    concat('<span>Filme: ', filme.nome_original,'</span>') as nome_original_formatado,
+                    filme.sinopse,
+                    concat(substr(filme.sinopse, 1, 50), '... Leia Mais')  as sinopse_reduzida
+                    from tbl_filme as filme;
+			
