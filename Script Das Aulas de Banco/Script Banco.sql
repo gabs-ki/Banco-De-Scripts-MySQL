@@ -452,7 +452,7 @@
 ########################################################################################################################
 													########
 													########
-####################################### MANIPULANDO DADOS COM O SELECT ################################################
+####################################### MANIPULANDO DADOS COM O SELECT #################################################
 
 			# -> Select
 				## SELECT 	- serve para especificar quais colunas serão exibidades
@@ -513,4 +513,247 @@
                     filme.sinopse,
                     concat(substr(filme.sinopse, 1, 50), '... Leia Mais')  as sinopse_reduzida
                     from tbl_filme as filme;
+########################################################################################################################
+													########
+													########
+########################################################################################################################
+            
+            ##### Adicionando o valor unitário para testarmos SELECT de valores
+            alter table tbl_filme
+				add column valor_unitario float;
+                
+                update tbl_filme set valor_unitario = 60.80 where id = 7;
+            
+            select * from tbl_filme;
+            
+            ## Retorna o menor valor (min)
+            select min(valor_unitario) as minimo from tbl_filme;
+            
+            ## Retorna o maior valor (max)
+            select max(valor_unitario) as maximo from tbl_filme;
+            
+            ## Retorna a media dos valores (avg)
+			select avg(valor_unitario) as media from tbl_filme;
+				
+                #- round() realiza o arredondamento e limitação das casas decimais de valores float/decimais
+                select round(avg(valor_unitario), 2) as media from tbl_filme;
+            
+            ## Retorna a soma dos valores (sum)
+			select round(sum(valor_unitario), 2) as soma from tbl_filme;
+            
+            ## Realizando calculos matemáticos no banco
+            select 
+            filme.nome as nome_filme,
+            filme.foto_capa as foto_filme,
+            concat('R$ ',filme.valor_unitario) as valor_unitario,
+            concat('R$ ', round((filme.valor_unitario - ((filme.valor_unitario * 10)/100)), 2)) as valor_desconto
+            from tbl_filme as filme;
+            
+            ## OPERADORES DE COMPARAÇÃO
+			# = 			## Igualdade
+            # < 			## Menor
+            # > 			## Menor
+            # <= 			## Menor ou igual
+            # >= 			## Maior ou igual
+            # <> ou !=		## Diferente
+            # like 			## Como
+            # is 			## É
+            
+            ## OPERADORES LÓGICOS
+            # and			##
+            # or			##
+            # not			##
+            
+            
+            ## Utilizando operadores lógicos
+            select filme.nome, filme.foto_capa, filme.valor_unitario
+				from tbl_filme as filme
+				where filme.valor_unitario < 40;
+            
+            select filme.nome, filme.foto_capa, filme.valor_unitario
+				from tbl_filme as filme
+				where filme.valor_unitario <= 40;
+            
+            select filme.nome, filme.foto_capa, filme.valor_unitario
+				from tbl_filme as filme
+				where filme.valor_unitario like '50.8';
+            
+            select filme.nome, filme.foto_capa, filme.valor_unitario
+				from tbl_filme as filme
+				where filme.valor_unitario >= 0
+				order by filme.valor_unitario desc;
+            
+			select filme.nome, filme.foto_capa, filme.valor_unitario
+				from tbl_filme as filme
+				where filme.valor_unitario != 40
+                or filme.valor_unitario is not null;
+            
+            ## null - Retorna os registros nulos
+            ## not null - Retorna os registros que não são nulos
+            select * from tbl_filme as filme where filme.valor_unitario is null;
+			select * from tbl_filme as filme where filme.valor_unitario is not null;
+            
+            ## Select para pegar 
+            select filme.nome, filme.valor_unitario
+				from tbl_filme as filme
+				where filme.valor_unitario >= 40
+                and filme.valor_unitario <= 50;
+                
+			## between - Retorna registros com um range de valores
+			select filme.nome, filme.valor_unitario
+				from tbl_filme as filme
+				where filme.valor_unitario not between 40 and 50;
+                
+			## LIKE
+            # like sozinho retorna somente a igualdade (like 'leão')
+            # like percentual no fim retorna o que inicia com a palavra chave (like 'leão%')
+            # like percentual no inicio retorna o que termina com a palavra chave (like '%leão')
+            # like percentual no inicio e fim retorna por qualquer parte da busca (like '%leão%')
+            
+########################################################################################################################
+														########
+														########
+############################################### FORMATANDO DATA E HORA #################################################
 			
+            # Retorna a data atual do servidor
+            select curdate() as data_atual;
+			select current_date() as data_atual;
+            
+            # Retorna a hora atual do servidor
+            select curtime() as hora_atual;
+            select current_time() as hora_atual;
+	
+			# Retorna tanto a data como a hora atual do servidor
+			select current_timestamp() as data_hora_atual;
+
+			#### COMANDOS DE FORMATAÇÃO
+
+			## HORA
+            
+				# Retorna somente a hora (00 a 23)
+				select time_format(curtime(), '%H') as hora_formatada;
+				select time_format(curtime(), '%T') as hora_formatada;
+                
+                # Retorna somente a hora (00 a 12)
+				select time_format(curtime(), '%h') as hora_formatada;
+                
+                # Retorna minuto
+				select time_format(curtime(), '%i') as hora_formatada;
+                
+                # Retorna segundo
+				select time_format(curtime(), '%s') as hora_formatada;
+                
+                # Retorna hora e minuto
+				select time_format(curtime(), '%H:%i') as hora_formatada;
+                
+                # Retorna no padrão (AM / PM)
+				select time_format(curtime(), '%r') as hora_formatada;
+                
+                # Retorna somente ( AM / PM)
+				select time_format(curtime(), '%p') as hora_formatada;
+                
+                # Funções (hour, minute, second)
+				select hour(curtime()) as hora_formatada;
+				select minute(curtime()) as hora_formatada;
+				select second(curtime()) as hora_formatada;
+                
+				# Formatando Data
+                
+					# Retorna o dia 
+					select date_format(curdate(), '%d') as data_formatada;
+                    
+                    # Retorna o mês em numeral
+					select date_format(curdate(), '%m') as data_formatada;
+                    
+                    # Retorna o mês por extenso
+					select date_format(curdate(), '%M') as data_formatada;
+                    
+                    # Retorna o mês abreviado
+					select date_format('2020-03-04', '%b') as data_formatada;
+					select date_format('2020-03-04', '%M') as data_formatada;
+                    
+                    # Retorna o ano com dois digitos
+					select date_format(curdate(), '%y') as data_formatada;
+                    
+                    # Retorna o ano com 4 digitos
+					select date_format(curdate(), '%Y') as data_formatada;
+                    
+                    # Retorna o numeral do dia da semana
+					select date_format(curdate(), '%w') as data_formatada;
+                    
+                    # Retorna o nome do dia da semana
+                    select date_format(curdate(), '%W') as data_formatada;
+            
+					# Retorna o dia
+					select day(curdate()) as data_formatada;
+                    
+                    # Retorna o mês
+					select month(curdate()) as data_formatada;
+                    
+                    # Retorna o ano
+					select year(curdate()) as data_formatada;
+                    
+                    # Retorna o dia por extenso
+					select dayname(curdate()) as data_formatada;
+                    
+                    # Retorna o dia do mes
+					select dayofmonth(curdate()) as data_formatada;
+                    
+                    # Retorna o dia do ano
+					select dayofyear(curdate()) as data_formatada;
+                    
+                    # Retorna o dia em numeral da semana
+					select dayofweek(curdate()) as data_formatada;
+                    
+                    # Retorna o nome do mês
+					select monthname(curdate()) as data_formatada;
+                    
+                    # Retorna o ano e a semana
+                    select yearweek(curdate()) as data_formatada;
+                    
+                    # Retorna apenas a semana do ano
+                    select weekofyear(curdate()) as data_formatada;
+            
+					select date_format(curdate(), '%d/%m/%Y') as data_formatada;
+					select date_format(curdate(), '%Y-%m-%d') as data_formatada;
+                    
+                    select time_format(curtime(), '%H:%i:%s') as data_formatada;
+                    select time_format(curtime(), '%s:%i:%H') as data_formatada;
+
+					## SUPER IMPORTANTE
+                    ### CONVERSÃO DE STRING DATE
+                    #### PADRÃO BRASILEIRO PARA UNIVERSAL
+					select date_format(str_to_date('05/07/2023', '%d/%m/%Y'), '%Y-%m-%d') as data_universal;
+                    
+                    ## Diferença de dias das datas
+                    select datediff('2023-05-24', '2023-05-01') as diferenca_de_data,
+							(datediff('2023-05-24', '2023-05-01') * 5) as valor_pagar;
+
+					## Diferença de horas
+                    select timediff('16:15:00', '10:05:01') as diferenca_de_hora,
+							(hour(timediff('16:15:00', '10:05:01')) * 5) as valor_pagar;
+
+					select addtime('06:00:00', '01:00:00') as data_adicionada;
+
+
+					select md5('senai') as dados;
+                    
+					select 'senai' as dados,
+							md5('senai') as dados_criptografados,
+                            sha('senai') as dados_cripto,
+                            sha1('senai') as dados_crpi,
+                            sha2('senai', 512) as dados_cr;
+					
+                    
+
+
+
+
+
+
+
+
+
+
+
+
