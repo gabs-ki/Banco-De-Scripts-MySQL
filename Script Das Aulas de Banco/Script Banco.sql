@@ -745,11 +745,154 @@
                             sha2('senai', 512) as dados_cr;
 					
                     
+########################################################################################################################
+														########
+														########
+#############################################  RELACIONAMENTO ENTRE TABELAS ############################################
 
+		## RELACIONAMENTO PELO WHERE
+	# Exemplo 1
+        select 											#
+			ator.nome as nome_ator,
+            ator.id as id_ator,
+            ator.data_nascimento as data_nascimento_ator,
+            sexo.sigla as sigla_sexo_ator
+        from 											#
+			tbl_ator as ator,
+            tbl_sexo as sexo
+        where 											# Quem especifica a relação entre as duas tabelas (sexo e ator)
+			sexo.id = ator.id_sexo;
+            
+		desc tbl_sexo;
+        
+	# Exemplo 2
+    
+		select
+			ator.nome as nome_ator,
+            ator.foto as foto_ator,
+            ator.biografia as biografia_ator,
+            sexo.nome as sexo_ator,
+            sexo.sigla as sigla_sexo_ator,
+            nacionalidade.nome as nacionalidade_ator
+		from
+			tbl_ator as ator,
+            tbl_sexo as sexo,
+            tbl_nacionalidade as nacionalidade,
+            tbl_ator_nacionalidade as ator_nacionalidade
+		where 
+			sexo.id = ator.id_sexo
+            AND
+            ator.id = ator_nacionalidade.id_ator
+            AND
+            nacionalidade.id = ator_nacionalidade.id_nacionalidade
+		order by 
+			ator.nome;
+        
+        select * from tbl_genero;
+        select * from tbl_filme;
+        select * from tbl_filme_genero;
+        select * from tbl_ator;
+        select * from tbl_ator_nacionalidade;
+        select * from tbl_nacionalidade;
 
+        ## RELACIONAMENTO PELO FROM
 
-
-
+	# Exemplo 1
+		
+        select 
+			ator.nome as nome_ator,
+			ator.data_nascimento as data_nascimento_ator,
+            sexo.sigla as sigla_sexo_ator
+        from
+				tbl_ator as ator
+            inner join
+				tbl_sexo as sexo
+            on 
+				sexo.id = ator.id_sexo;
+                
+		# Exemplo 2
+        
+			select
+				ator.nome as nome_ator,
+                ator.foto as foto_ator,
+                ator.biografia as biografia_ator,
+                sexo.nome as sexo_ator,
+                sexo.sigla as sigla_sexo_ator,
+                nacionalidade.nome as nacionalidade_ator
+            from
+					tbl_ator as ator
+				inner join
+					tbl_sexo as sexo
+                on 
+					sexo.id = ator.id_sexo
+				inner join
+					tbl_ator_nacionalidade as ator_nacionalidade
+				on 
+					ator.id = ator_nacionalidade.id_ator
+				inner join
+					tbl_nacionalidade as nacionalidade
+				on
+					nacionalidade.id = ator_nacionalidade.id_nacionalidade;
+					
+				
+			# Atividade
+            
+            ## PROFESSOR:
+				### Filme
+                ### INTERMEDIARIA Filme X Genero
+                ### Genero
+                ### INTERMEDIARIA Filme X Ator
+                ### Ator
+                ### INTERMEDIARIA Ator X Nacionalidade
+                ### Nacionalidade
+                ### Sexo
+                ### Ator X Sexo
+				
+            
+				select 
+					filme.nome as nome_filme,
+                    filme.data_lancamento as data_lancamento_filme,
+                    filme.sinopse as sinopse_filme,
+                    genero.nome as genero_filme,
+                    ator.nome as nome_ator,
+                    ator.biografia as biografia_ator,
+                    nacionalidade.nome as nome_nacionalidade_ator,
+                    sexo.nome as sexo_ator
+				from
+					tbl_ator as ator
+				inner join
+					tbl_sexo as sexo
+				on 						#############################   Relacionamento sexo e ator ##############################
+					sexo.id = ator.id_sexo
+					inner join
+						tbl_ator_nacionalidade as ator_nacionalidade
+                    on  					######################   Relacionamento ator e intermediaria ator_nacionalidade ######################
+						ator.id = ator_nacionalidade.id_ator
+						inner join
+							tbl_nacionalidade as nacionalidade
+						on  					################### Relacionamento nacionalidade e intermediaria ator_nacionalidade #####################
+							nacionalidade.id = ator_nacionalidade.id_nacionalidade
+                            inner join
+								tbl_filme_ator as filme_ator
+							on  								######################   Relacionamento ator e intermediaria filme_ator ##########################
+								ator.id = filme_ator.id_ator
+								inner join
+									tbl_filme as filme
+								on  								######################   Relacionamento filme e intermediaria filme_ator ##########################
+									filme.id = filme_ator.id_filme
+                                    inner join
+										tbl_filme_genero as filme_genero
+									on  								######################   Relacionamento filme e intermediaria filme_genero #########################
+										filme.id = filme_genero.id_filme
+                                        inner join
+											tbl_genero as genero
+										on  								#######################   Relacionamento genero e intermediaria filme_genero #########################
+											genero.id = filme_genero.id_genero
+                                            order by  								############ Ordenando pelo nome do filme e do ator ###########
+												filme.nome desc, ator.nome desc;
+										
+					
+        
 
 
 
